@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+
+<%=image_tag("car1.jpg")%>
+<div class="floater">
+
+</div>
+<p>
+  <strong>Brand:</strong>
+  <%= @car.brand.brand %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @car.model %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @car.year %>
+</p>
+
+<p>
+  <strong>Millage:</strong>
+  <%= @car.millage %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  £<%= @car.price %>
+</p>
+
+</div>
+
+
+
+<p>
+  <strong>Description:</strong>
+  <%= @car.description %>
+</p>
+
+
+
+
+
+<% if user_signed_in? and @car.user_id == current_user.id %><%= link_to 'Edit', edit_car_path(@car) %><%end%> |
+<%= link_to 'Back', cars_path %>
+
+
+
+</div>

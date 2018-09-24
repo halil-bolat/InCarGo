@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Incargo</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">InCarGo</a>
+          </div>
+          <% if user_signed_in? %>
+          <span class="loginn">Logged in as <strong><%= current_user.email %></strong></span>
+          <ul class="nav navbar-nav">
+            <li><a href="/">Cars</a></li>
+            <li><a href="/cars/new">Add new car</a></li>
+            <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+          </ul>
+          <% else %>
+          <ul class="nav navbar-nav">
+            <li><a href="/">Cars</a></li>
+            <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
+            <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+          </ul>
+
+
+        <% end %>
+      </nav>
+
+
+
+
+
+      <br>
+      <br>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>
